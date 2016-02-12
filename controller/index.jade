@@ -4,7 +4,30 @@ html(lang="ja")
     meta(name="viewport" content="width=device-width, initial-scale=1")
     meta(charset="UTF-8")
     title
+    link(rel="stylesheet", href="https://cdn.rawgit.com/jgthms/bulma/master/css/bulma.min.css")
   body
-    h1 controller
+    .hero
+      .hero-content
+        .container
+          h1.title Controller
+          h2.sub-title コントローラー
+
+    .controller
+      button.button.is-large ゆっくり前進
+      button.button.is-large 前進
+      br
+      button.button.is-large 右
+      button.button.is-large 少し右
+      button.button.is-large ちょっと右
+      br
+      button.button.is-large 停止
+      br
+      button.button.is-large 左
+      button.button.is-large 少し左
+      button.button.is-large ちょっと左
+      br
+      button.button.is-large 後進
+      button.button.is-large ゆっくり後進
+    script(src="/socket.io/socket.io.js")
     script
       include ./scripts/main.js

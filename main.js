@@ -30,15 +30,11 @@ var io = socketio.listen(server)
 
 io.sockets.on("connection", (socket) => {
 
-  // メッセージ送信（送信者にも送られる）
-  socket.on("C_to_S_message", (data) => {
-    io.sockets.emit("S_to_C_message", {value:data.value})
+  socket.on("CTR_to_RCV__message", (data) => {
+    console.log("CTR_to_RCV__message : " + data.value)
+    socket.broadcast.emit("CTR_to_RCV__message", {value:data.value})
   })
 
-  // ブロードキャスト（送信者以外の全員に送信）
-  socket.on("C_to_S_broadcast", (data) => {
-    socket.broadcast.emit("S_to_C_message", {value:data.value})
-  })
 
   // 切断したときに送信
   socket.on("disconnect", () => {
