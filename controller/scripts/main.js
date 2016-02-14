@@ -6,8 +6,6 @@ var s = io.connect();
 s.on("connect", function () {});  // 接続時
 s.on("disconnect", function (client) {});  // 切断時
 
-function sendMessage(msg) {
+function sendCommand(msg) {
   s.emit("CTR_to_RCV__message", {value:msg});
 }
-
-sendMessage("test");
