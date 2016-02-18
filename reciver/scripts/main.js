@@ -27,9 +27,11 @@ s.on("CTR_to_RCV__message", function (data) {
 });
 
 function setCurtCmd(cmd) {
-  prev_cmd = curt_cmd;
-  curt_cmd = cmd;
-  cmd_uptime = 0;
+  if (curt_cmd != cmd) {
+    prev_cmd = curt_cmd;
+    curt_cmd = cmd;
+    cmd_uptime = 0;
+  }
 }
 
 
