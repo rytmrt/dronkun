@@ -1,9 +1,10 @@
 
-const http = require('http')
-const path = require('path')
+const http     = require('http')
+const path     = require('path')
+const fs       = require('fs')
 const socketio = require('socket.io')
-const jade = require('jade')
-const isset = (data) => {
+const jade     = require('jade')
+const isset    = (data) => {
   return (typeof(data) != 'undefined');
 }
 
@@ -15,6 +16,12 @@ var server = http.createServer((req, res) => {
     case 'reciver':
       res.writeHead(200, {"Content-Type":"text/html"})
       var output = jade.renderFile('./'+lookup+'/index.jade', null)
+      res.end(output)
+      break;
+
+    case 'dtmf.ogg':
+      res.writeHead(200, {"Content-Type":"audio/ogg"})
+      var output = fs.readFileSync("./reciver/sounds/dtmf_0123456789-_abcd.ogg");
       res.end(output)
       break;
 
