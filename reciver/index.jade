@@ -7,6 +7,8 @@ html(lang="ja")
   body
     h1 reciver
     script(src="/socket.io/socket.io.js")
+    script(src="https://code.createjs.com/soundjs-0.6.2.min.js")
     script
+      include ./scripts/sound.js
       include ./scripts/motor.js
       include ./scripts/main.js
