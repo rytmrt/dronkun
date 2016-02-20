@@ -1,14 +1,14 @@
 
 var MOTOR_COMMAND = {
   "STOP":        "d",
-  "FRONT":       "5",
-  "BACK":        "0",
+  "FRONT":       "0",
+  "BACK":        "5",
   "RIGHT_FRONT": "1",
   "LEFT_FRONT":  "4",
   "RIGHT_BACK":  "2",
   "LEFT_BACK":   "8",
-  "RIGHT":       "9",
-  "LEFT":        "6",
+  "RIGHT":       "6",
+  "LEFT":        "9",
 };
 
 var CMD_TO_MOTOR_COMMAND = {

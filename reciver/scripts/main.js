@@ -1,6 +1,6 @@
 
 
-var LOOP_TIME     = 100;
+var LOOP_TIME     = 33;
 
 var SLOW_SPEED    = 10; // *偶数だけにしてください
 var ROTATE_FRAMES = {
