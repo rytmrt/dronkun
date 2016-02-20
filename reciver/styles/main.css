@@ -1,5 +1,7 @@
 .controller {
   position: relative;
+  padding-top: 16em;
+  margin: 2em;
 }
 .button {
   position: absolute;
@@ -28,4 +30,19 @@
   top: 8em;
   left: 0;
   right: 0;
+}
+
+.console {
+  height: 20em;
+  background-color: #000;
+  overflow: hidden;
+}
+
+.console .title,
+.console .log * {
+  color: #FFF;
+}
+
+.console .log {
+  padding: 0.5em;
 }
