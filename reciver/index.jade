@@ -3,24 +3,28 @@ html(lang="ja")
   head
     meta(name="viewport" content="width=device-width, initial-scale=1")
     meta(charset="UTF-8")
-    link(rel="stylesheet", href="https://cdn.rawgit.com/jgthms/bulma/master/css/bulma.min.css")
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.0.14/css/bulma.css")
     title レシーバー
     style
       include ./styles/main.css
   body
-    .console
-
     .hero
       .hero-content
         .container
-          h1.title Controller
+          h1.title RECIVER
 
     .controller
-      button.button.is-large.btn-F(onClick="setCurtCmd('FRONT')") 前進
-      button.button.is-large.btn-L(onClick="setCurtCmd('LEFT')") 左
-      button.button.is-large.btn-S.is-danger(onClick="setCurtCmd('STOP')") 停止
-      button.button.is-large.btn-R(onClick="setCurtCmd('RIGHT')") 右
-      button.button.is-large.btn-B(onClick="setCurtCmd('BACK')") 後進
+      button.button.is-large.btn-F 前進
+      button.button.is-large.btn-L 左
+      button.button.is-large.btn-S.is-danger 停止
+      button.button.is-large.btn-R 右
+      button.button.is-large.btn-B 後進
+
+    .console.container
+      h2.title console
+      .log
+        p RECIVE START
+
 
     script(src="/socket.io/socket.io.js")
     script(src="https://code.createjs.com/soundjs-0.6.2.min.js")
@@ -29,4 +33,5 @@ html(lang="ja")
     script
       include ./scripts/sound.js
       include ./scripts/motor.js
+      include ./scripts/view.js
       include ./scripts/main.js

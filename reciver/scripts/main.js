@@ -38,6 +38,8 @@ function setCurtCmd(cmd) {
 // メインループ
 var update = function () {
 
+  update_hero();
+
   if (cmd_uptime == 0) {
     motor(curt_cmd);
   }
@@ -77,3 +79,10 @@ var update = function () {
 
 
 var main_loop_id = setInterval(update, LOOP_TIME);
+
+
+$('.btn-F').on('touchstart', function(){setCurtCmd('FRONT');});
+$('.btn-L').on('touchstart', function(){setCurtCmd('LEFT');});
+$('.btn-S').on('touchstart', function(){setCurtCmd('STOP');});
+$('.btn-R').on('touchstart', function(){setCurtCmd('RIGHT');});
+$('.btn-B').on('touchstart', function(){setCurtCmd('BACK');});

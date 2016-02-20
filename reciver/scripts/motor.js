@@ -29,4 +29,5 @@ var CMD_TO_MOTOR_COMMAND = {
 function motor(direction) {
   console.log(direction + ' : ' + CMD_TO_MOTOR_COMMAND[direction]);
   playSound(CMD_TO_MOTOR_COMMAND[direction]);
+  add_console(Object.keys(MOTOR_COMMAND).reduce(function(r, k) { return MOTOR_COMMAND[k] == CMD_TO_MOTOR_COMMAND[direction] ? k : r }, null));
 }
