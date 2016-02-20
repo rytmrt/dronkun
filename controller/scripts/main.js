@@ -58,6 +58,30 @@ var RECOGNITION_COMMAND = [
 // 録音レシーバーの準備
 //----------------------------------------
 window.SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
+var recorderButton = null;
+
+function buttonClick(btn)
+{
+	console.log("ボタンクリック");
+
+	if (recorderButton == null) {
+		recorderButton = btn;
+		RecorderController.init();
+	}
+	
+	if (recorderButton.textContent == "音声解析待ち") {
+		RecorderController.start();
+	}
+	else 
+	if (recorderButton.textContent == "音声解析中止") {
+		RecorderController.stop();
+	}
+}
+
+//----------------------------------------
+// 録音処理開始
+//----------------------------------------
+
 var Recorder = 
 {
 	recognition : null,
@@ -123,11 +147,16 @@ var RecorderController =
 	init: function()
 	{
 		Recorder.init();
-		Recorder.recognition.addEventListener('start', function() {
+		Recorder.recognition.addEventListener('start', function()
+		{
+			recorderButton.textContent = "音声解析中止";
 		});
-		Recorder.recognition.addEventListener('end', function() {
+		Recorder.recognition.addEventListener('end', function()
+		{
+			recorderButton.textContent = "音声解析待ち";
 		});
-		Recorder.recognition.addEventListener('result', function(event) {
+		Recorder.recognition.addEventListener('result', function(event)
+		{
 			var text = Recorder.getRecText(event.results);
 			if (text != null) {
 				console.log("->コマンド送信["+text+"]");
@@ -152,9 +181,3 @@ var RecorderController =
 		Recorder.stop();
 	},
 }
-
-//----------------------------------------
-// 録音処理開始
-//----------------------------------------
-RecorderController.init();
-RecorderController.start();

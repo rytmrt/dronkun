@@ -13,6 +13,7 @@ html(lang="ja")
           h2.sub-title コントローラー
 
     .controller
+      button.button.is-large(onClick="buttonClick(this)") 音声解析待ち
       button.button.is-large(onClick="sendCommand('FRONT_SLOW')") ゆっくり前進
       button.button.is-large(onClick="sendCommand('FRONT')") 前進
       br
