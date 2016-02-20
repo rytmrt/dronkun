@@ -11,6 +11,8 @@ const isset    = (data) => {
 var server = http.createServer((req, res) => {
   var lookup = path.basename(decodeURI(req.url));
 
+  console.log(lookup)
+
   switch (lookup) {
     case 'controller':
     case 'reciver':
@@ -21,7 +23,13 @@ var server = http.createServer((req, res) => {
 
     case 'dtmf.ogg':
       res.writeHead(200, {"Content-Type":"audio/ogg"})
-      var output = fs.readFileSync("./reciver/sounds/dtmf_0123456789-_abcd.ogg");
+      var output = fs.readFileSync("./reciver/sounds/dtmf_0123456789-#ABCD.ogg");
+      res.end(output)
+      break;
+
+    case 'dtmf.mp3':
+      res.writeHead(200, {"Content-Type":"audio/mpeg"})
+      var output = fs.readFileSync("./reciver/sounds/dtmf_0123456789-#ABCD.mp3");
       res.end(output)
       break;
 

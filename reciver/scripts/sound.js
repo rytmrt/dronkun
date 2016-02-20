@@ -1,11 +1,9 @@
-
-
 // ogg形式のファイルが使えない場合にmp3形式のファイルを使う
 createjs.Sound.alternateExtensions = ["mp3"];
 // マニフェストの作成
 var manifest = [
     {
-        src: "dtmf.ogg",
+      src: "dtmf.ogg",
         data: {
             channels: 2,    // 同時に鳴らす音の数
             audioSprite: [
@@ -20,7 +18,7 @@ var manifest = [
                 {id: "8", startTime: 1600, duration: 100},
                 {id: "9", startTime: 1800, duration: 100},
                 {id: "-", startTime: 2000, duration: 100},
-                {id: "_", startTime: 2200, duration: 100},
+                {id: "#", startTime: 2200, duration: 100},
                 {id: "a", startTime: 2400, duration: 100},
                 {id: "b", startTime: 2600, duration: 100},
                 {id: "c", startTime: 2800, duration: 100},
