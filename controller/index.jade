@@ -13,22 +13,25 @@ html(lang="ja")
           h2.sub-title コントローラー
 
     .controller
-      button.button.is-large(onClick="buttonClick(this)") 音声解析待ち
-      button.button.is-large(onClick="sendCommand('FRONT_SLOW')") ゆっくり前進
-      button.button.is-large(onClick="sendCommand('FRONT')") 前進
-      br
-      button.button.is-large(onClick="sendCommand('RIGHT')") 右
-      button.button.is-large(onClick="sendCommand('RIGHT_SMALL')") 少し右
-      button.button.is-large(onClick="sendCommand('RIGHT_SMALL_MORE')") ちょっと右
-      br
-      button.button.is-large(onClick="sendCommand('STOP')") 停止
-      br
-      button.button.is-large(onClick="sendCommand('LEFT')") 左
-      button.button.is-large(onClick="sendCommand('LEFT_SMALL')") 少し左
-      button.button.is-large(onClick="sendCommand('LEFT_SMALL_MORE')") ちょっと左
-      br
-      button.button.is-large(onClick="sendCommand('BACK')") 後進
-      button.button.is-large(onClick="sendCommand('BACK_SLOW')") ゆっくり後進
+      div(style="text-align:center")
+        button.button.is-large(onClick="buttonClick(this)") 音声解析待ち
+        br
+        br
+        button.button.is-large(onClick="sendCommand('FRONT_SLOW')") ゆっくり 前進
+        br
+        button.button.is-large(onClick="sendCommand('LEFT_SMALL_MORE')") ﾁｮｯﾄ 左
+        button.button.is-large(onClick="sendCommand('FRONT')") 前進
+        button.button.is-large(onClick="sendCommand('RIGHT_SMALL_MORE')") ﾁｮｯﾄ 右
+        br
+        button.button.is-large(onClick="sendCommand('LEFT_SMALL')") 少し 左
+        button.button.is-large(onClick="sendCommand('STOP')") 停止
+        button.button.is-large(onClick="sendCommand('RIGHT_SMALL')") 少し 右
+        br
+        button.button.is-large(onClick="sendCommand('LEFT')") 左
+        button.button.is-large(onClick="sendCommand('BACK')") 後進
+        button.button.is-large(onClick="sendCommand('RIGHT')") 右
+        br
+        button.button.is-large(onClick="sendCommand('BACK_SLOW')") ゆっくり 後進
     script(src="/socket.io/socket.io.js")
     script
       include ./scripts/main.js
