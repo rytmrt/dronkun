@@ -1,0 +1,31 @@
+.controller {
+  position: relative;
+}
+.button {
+  position: absolute;
+  margin: auto;
+  width: 4em;
+}
+.btn-F {
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.btn-L {
+  top: 4em;
+  left: 0;
+}
+.btn-S {
+  top: 4em;
+  left: 0;
+  right: 0;
+}
+.btn-R {
+  top: 4em;
+  right: 0;
+}
+.btn-B {
+  top: 8em;
+  left: 0;
+  right: 0;
+}

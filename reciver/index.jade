@@ -3,11 +3,29 @@ html(lang="ja")
   head
     meta(name="viewport" content="width=device-width, initial-scale=1")
     meta(charset="UTF-8")
-    title
+    link(rel="stylesheet", href="https://cdn.rawgit.com/jgthms/bulma/master/css/bulma.min.css")
+    title レシーバー
+    style
+      include ./styles/main.css
   body
-    h1 reciver
+    .console
+
+    .hero
+      .hero-content
+        .container
+          h1.title Controller
+
+    .controller
+      button.button.is-large.btn-F(onClick="setCurtCmd('FRONT')") 前進
+      button.button.is-large.btn-L(onClick="setCurtCmd('LEFT')") 左
+      button.button.is-large.btn-S.is-danger(onClick="setCurtCmd('STOP')") 停止
+      button.button.is-large.btn-R(onClick="setCurtCmd('RIGHT')") 右
+      button.button.is-large.btn-B(onClick="setCurtCmd('BACK')") 後進
+
     script(src="/socket.io/socket.io.js")
     script(src="https://code.createjs.com/soundjs-0.6.2.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js")
     script
       include ./scripts/sound.js
       include ./scripts/motor.js
