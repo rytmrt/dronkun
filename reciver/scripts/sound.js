@@ -58,8 +58,22 @@ createjs.Sound.registerSounds(manifest);
  */
 function playSound(soundID) {
     // パンを設定しているのは、Google Chromeで音が片方からしか聞こえないバグの対応のため
-    createjs.Sound.play(soundID, {pan: 0.01});
+    return createjs.Sound.play(soundID, {pan: 0.01});
 }
 
+var r2d2_voice_timeout_id;
+var r2d2_voice_instance;;
+var c = 0;
+function playR2D2Voice() {
+  if (r2d2_voice_timeout_id != null) {
+    clearTimeout(r2d2_voice_timeout_id);
+  }
+  if (r2d2_voice_instance != null) {
+    r2d2_voice_instance.stop();
+  }
 
+  var r2d2_rand = "r"+("0"+Math.floor( Math.random() * (19) )).slice(-2);
+  r2d2_voice_instance = playSound(r2d2_rand);
 
+  r2d2_voice_timeout_id = setTimeout(playR2D2Voice, 5000);
+}
