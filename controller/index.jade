@@ -14,7 +14,7 @@ html(lang="ja")
 
     .controller
       div(style="text-align:center")
-        button.button.is-large(onClick="buttonClick(this)") 音声解析待ち
+        button#recorder.button.is-large.is-primary(onClick="buttonClick(this)") 音声解析開始
         br
         br
         button.button.is-large(onClick="sendCommand('FRONT_SLOW')") ゆっくり 前進
@@ -33,5 +33,6 @@ html(lang="ja")
         br
         button.button.is-large(onClick="sendCommand('BACK_SLOW')") ゆっくり 後進
     script(src="/socket.io/socket.io.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.js")
     script
       include ./scripts/main.js
