@@ -147,15 +147,15 @@ var RecorderController =
 	init: function()
 	{
 		Recorder.init();
-		Recorder.recognition.addEventListener('start', function()
+		Recorder.recognition.addEventListener('start', function()			// 録音開始
 		{
 			recorderButton.textContent = "音声解析中止";
 		});
-		Recorder.recognition.addEventListener('end', function()
+		Recorder.recognition.addEventListener('end', function()				// 録音終了
 		{
 			recorderButton.textContent = "音声解析待ち";
 		});
-		Recorder.recognition.addEventListener('result', function(event)
+		Recorder.recognition.addEventListener('result', function(event)		// 録音内容解析
 		{
 			var text = Recorder.getRecText(event.results);
 			if (text != null) {
