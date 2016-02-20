@@ -42,6 +42,9 @@ var update = function () {
 
   if (cmd_uptime == 0) {
     motor(curt_cmd);
+    var r2d2_rand = "r"+("0"+Math.floor( Math.random() * (19) )).slice(-2);
+    console.log(r2d2_rand);
+    playSound(r2d2_rand);
   }
 
   switch (curt_cmd) {

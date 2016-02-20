@@ -25,7 +25,27 @@ var manifest = [
                 {id: "d", startTime: 3000, duration: 100}
             ]
         }
-    }
+    },
+    {src: "r2d2_r00.ogg", id: "r00"},
+    {src: "r2d2_r01.ogg", id: "r01"},
+    {src: "r2d2_r02.ogg", id: "r02"},
+    {src: "r2d2_r03.ogg", id: "r03"},
+    {src: "r2d2_r04.ogg", id: "r04"},
+    {src: "r2d2_r05.ogg", id: "r05"},
+    {src: "r2d2_r06.ogg", id: "r06"},
+    {src: "r2d2_r07.ogg", id: "r07"},
+    {src: "r2d2_r08.ogg", id: "r08"},
+    {src: "r2d2_r09.ogg", id: "r09"},
+    {src: "r2d2_r10.ogg", id: "r10"},
+    {src: "r2d2_r11.ogg", id: "r11"},
+    {src: "r2d2_r12.ogg", id: "r12"},
+    {src: "r2d2_r13.ogg", id: "r13"},
+    {src: "r2d2_r14.ogg", id: "r14"},
+    {src: "r2d2_r15.ogg", id: "r15"},
+    {src: "r2d2_r16.ogg", id: "r16"},
+    {src: "r2d2_r17.ogg", id: "r17"},
+    {src: "r2d2_r18.ogg", id: "r18"},
+    {src: "r2d2_r19.ogg", id: "r19"},
 ];
 
 // マニフェストを登録
