@@ -19,40 +19,19 @@ function sendCommand(msg) {
 //----------------------------------------
 // 文言リスト＆コマンドリスト
 //----------------------------------------
-var RECOGNITION_WORD = [
-	"ゆっくり前進",
-	"前進",
-
-	"右",
-	"少し右",
-	"ちょっと右",
-
-	"停止",
-
-	"ちょっと左",
-	"少し左",
-	"左",
-
-	"こうしん",
-	"ゆっくりこうしん",
-];
-var RECOGNITION_COMMAND = [
-	"FRONT_SLOW",
-	"FRONT",
-
-	"RIGHT",
-	"RIGHT_SMALL",
-	"RIGHT_SMALL_MORE",
-
-	"STOP",
-
-	"LEFT_SMALL_MORE",
-	"LEFT_SMALL",
-	"LEFT",
-
-	"BACK",
-	"BACK_SLOW",
-];
+var RECOGNITION_WORD = {
+	"ゆっくり前進":			"FRONT_SLOW",				// 前系
+	"前進":					"FRONT",
+	"右":					"RIGHT",					// 右系
+	"少し右":				"RIGHT_SMALL",
+	"ちょっと右":			"RIGHT_SMALL_MORE",
+	"停止":					"STOP",						// 停止系
+	"ちょっと左":			"LEFT_SMALL_MORE",			// 左系
+	"少し左":				"LEFT_SMALL",
+	"左":					"LEFT",
+	"こうしん":				"BACK",						// 後系
+	"ゆっくりこうしん":		"BACK_SLOW",
+};
 
 //----------------------------------------
 // 録音レシーバーの準備
@@ -127,10 +106,10 @@ var Recorder =
 				var transcript = items.item(j).transcript;
 				console.log("->items["+i+"]["+j+"]: "+transcript);
 				
-				var wordIndex = RECOGNITION_WORD.indexOf(transcript);				// 判定
-				if (wordIndex != -1) {
-					console.log("->該当ワード["+wordIndex+"]["+transcript+"]");
-					return RECOGNITION_COMMAND[wordIndex];							// ワード取得;
+				var wordIndex = transcript in RECOGNITION_WORD;						// 判定
+				if (wordIndex == true) {
+					console.log("->該当ワード["+transcript+"]");
+					return RECOGNITION_WORD[transcript];							// ワード取得;
 				}
 			}
 		}
