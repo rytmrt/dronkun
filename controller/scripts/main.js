@@ -58,23 +58,23 @@ var RECOGNITION_COMMAND = [
 // 録音レシーバーの準備
 //----------------------------------------
 window.SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
-var recorderButton = null;
+var recorderButton = null;		// ボタン情報更新用のオブジェクト
+var recorderCancel = false;		// 録音を中止する
 
 function buttonClick(btn)
 {
-	console.log("ボタンクリック");
-
-	if (recorderButton == null) {
+	if (recorderButton == null) {			// 初回のみの初期化
 		recorderButton = btn;
 		RecorderController.init();
 	}
 	
-	if (recorderButton.textContent == "音声解析待ち") {
+	if (recorderButton.textContent == "音声解析開始") {
 		RecorderController.start();
 	}
 	else 
 	if (recorderButton.textContent == "音声解析中止") {
 		RecorderController.stop();
+		recorderCancel = true;
 	}
 }
 
@@ -93,8 +93,8 @@ var Recorder =
 	{
 		this.recognition = new webkitSpeechRecognition();
 		this.recognition.lang = 'ja';							// 日本語
-	//	this.recognition.continuous = true;						// 連続音節認識
-		this.recognition.maxAlternatives = 5;					// 変換候補数
+	//	this.recognition.continuous = true;						// 連続音節認識(うまく認識しないので使わない)
+		this.recognition.maxAlternatives = 10;					// 変換候補数
 	},
 	
 	//----------------------------------------
@@ -142,30 +142,6 @@ var Recorder =
 var RecorderController = 
 {
 	//----------------------------------------
-	// 初期化
-	//----------------------------------------
-	init: function()
-	{
-		Recorder.init();
-		Recorder.recognition.addEventListener('start', function()			// 録音開始
-		{
-			recorderButton.textContent = "音声解析中止";
-		});
-		Recorder.recognition.addEventListener('end', function()				// 録音終了
-		{
-			recorderButton.textContent = "音声解析待ち";
-		});
-		Recorder.recognition.addEventListener('result', function(event)		// 録音内容解析
-		{
-			var text = Recorder.getRecText(event.results);
-			if (text != null) {
-				console.log("->コマンド送信["+text+"]");
-				sendCommand(text);
-			}
-		});
-	},
-	
-	//----------------------------------------
 	// 解析開始
 	//----------------------------------------
 	start: function()
@@ -179,5 +155,39 @@ var RecorderController =
 	stop: function()
 	{
 		Recorder.stop();
+	},
+	
+	//----------------------------------------
+	// 初期化
+	//----------------------------------------
+	init: function()
+	{
+		Recorder.init();
+		Recorder.recognition.addEventListener('start', function()			// 録音開始
+		{
+			console.log("音声解析開始");
+			recorderButton.textContent = "音声解析中止";
+			$("#recorder").removeClass("is-primary");
+			$("#recorder").addClass("is-danger");
+		});
+		Recorder.recognition.addEventListener('end', function()				// 録音終了
+		{
+			console.log("音声解析終了");
+			recorderButton.textContent = "音声解析開始";
+			$("#recorder").removeClass("is-danger");
+			$("#recorder").addClass("is-primary");
+			if (recorderCancel == false) {
+				setTimeout(RecorderController.start, 1000);
+			}
+			recorderCancel = false;
+		});
+		Recorder.recognition.addEventListener('result', function(event)		// 録音内容解析
+		{
+			var text = Recorder.getRecText(event.results);
+			if (text != null) {
+				console.log("->コマンド送信["+text+"]");
+				sendCommand(text);
+			}
+		});
 	},
 }
