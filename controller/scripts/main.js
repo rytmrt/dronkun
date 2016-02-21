@@ -156,7 +156,7 @@ var RecorderController =
 			$("#recorder").removeClass("is-danger");
 			$("#recorder").addClass("is-primary");
 			if (recorderCancel == false) {
-				setTimeout(RecorderController.start, 1000);
+				setTimeout(RecorderController.start, 500);
 			}
 			recorderCancel = false;
 		});
