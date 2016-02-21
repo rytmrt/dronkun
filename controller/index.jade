@@ -17,6 +17,9 @@ html(lang="ja")
         button#recorder.button.is-large.is-primary(onClick="buttonClick(this)") 音声解析開始
         br
         br
+        button.button.is-large.is-warning(onClick="sendCommand('STOP')") 停止
+        br
+        br
         button.button.is-large(onClick="sendCommand('FRONT_SLOW')") ゆっくり 前進
         br
         button.button.is-large(onClick="sendCommand('LEFT_SMALL_MORE')") ﾁｮｯﾄ 左
