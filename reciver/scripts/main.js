@@ -48,8 +48,11 @@ var update = function () {
   switch (curt_cmd) {
 
     case 'FRONT':
-    case 'STOP':
     case 'BACK':
+      break;
+
+    case 'STOP':
+      motor('STOP');
       break;
 
     case 'FRONT_SLOW':
@@ -70,8 +73,10 @@ var update = function () {
     case 'RIGHT_SMALL_MORE':
 
       if (cmd_uptime >= ROTATE_FRAMES[curt_cmd]) {
-        setCurtCmd(prev_cmd);
-        motor(curt_cmd);
+        //setCurtCmd(prev_cmd);
+        //motor(curt_cmd);
+        setCurtCmd('STOP');
+        motor('STOP');
       }
       break;
   }
