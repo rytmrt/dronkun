@@ -75,5 +75,5 @@ function playR2D2Voice() {
   var r2d2_rand = "r"+("0"+Math.floor( Math.random() * (19) )).slice(-2);
   r2d2_voice_instance = playSound(r2d2_rand);
 
-  r2d2_voice_timeout_id = setTimeout(playR2D2Voice, 5000);
+  r2d2_voice_timeout_id = setTimeout(playR2D2Voice, 10000);
 }
